@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Select Seats</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background-color: #f9f9f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .seat-container {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      width: 90%;
+      max-width: 450px;
+    }
+
+    .seat-container h2 {
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    .scooter-img {
+      width: 120px;
+      margin: 10px 0 20px 0;
+    }
+
+    .seat-count-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    .seat-btn {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      border: 1px solid #ccc;
+      background: #fff;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .seat-btn.active {
+      background: #ff4d6d;
+      color: white;
+      border: none;
+    }
+
+    .categories {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 30px;
+      font-size: 14px;
+    }
+
+    .category {
+      text-align: center;
+    }
+
+    .category span {
+      display: block;
+    }
+
+    .available {
+      color: green;
+      font-weight: 500;
+    }
+
+    .select-btn {
+      padding: 12px 25px;
+      background-color: #ff4d6d;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .select-btn:hover {
+      background-color: #e8435e;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="seat-container">
+    <h2>How Many Seats?</h2>
+    <!-- Replace this line -->
+    <img src="https://img.freepik.com/premium-vector/scooter-cartoon-icon-illustration-motorcycle-vehicle-icon-concept-isolated_444663-974.jpg" alt="Vehicle" class="scooter-img" id="vehicle-img">
+
+    <div class="seat-count-buttons">
+      <button class="seat-btn active">1</button>
+      <button class="seat-btn active">2</button>
+      <button class="seat-btn active">3</button>
+      <button class="seat-btn active">4</button>
+      <button class="seat-btn active">5</button>
+      <button class="seat-btn active">6</button>
+    </div>
+
+  <script>
+    let maxSeatsAllowed = 2; // default to 2
+    let selectedSeats = [];
+
+    function setSeatCount(count) {
+      maxSeatsAllowed = parseInt(count);
+      selectedSeats = [];
+
+      // Reset previous seat selections
+      document.querySelectorAll('.seat.selected').forEach(seat => {
+        seat.classList.remove('selected');
+      });
+    }
+
+    function toggleSeat(button) {
+      const seatNumber = button.textContent;
+
+      if (button.classList.contains('selected')) {
+        button.classList.remove('selected');
+        selectedSeats = selectedSeats.filter(seat => seat !== seatNumber);
+        return;
+      }
+
+      if (selectedSeats.length >= maxSeatsAllowed) {
+        alert(`You can only select ${maxSeatsAllowed} seat(s).`);
+        return;
+      }
+
+      button.classList.add('selected');
+      selectedSeats.push(seatNumber);
+    }
+  </script>
+
+    <div class="categories">
+      <div class="category">
+        <span><strong>NORMAL</strong></span>
+        <span>Rs. 177</span>
+        <span class="available">Available</span>
+      </div>
+      <div class="category">
+        <span><strong>EXECUTIVE</strong></span>
+        <span>Rs. 177</span>
+        <span class="available">Available</span>
+      </div>
+      <div class="category">
+        <span><strong>PREMIUM</strong></span>
+        <span>Rs. 177</span>
+        <span class="available">Available</span>
+      </div>
+      <div class="category">
+        <span><strong>VIP</strong></span>
+        <span>Rs. 295</span>
+        <span class="available">Available</span>
+      </div>
+    </div>
+
+    <button class="select-btn" onclick="proceedToSeats()">Select Seats</button>
+  </div>
+
+    <script>
+  const buttons = document.querySelectorAll('.seat-btn');
+  const image = document.getElementById('vehicle-img');
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      buttons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const seatNumber = btn.textContent;
+
+      // Change image based on seat number
+      switch (seatNumber) {
+        case "1":
+          image.src = "https://i.pinimg.com/736x/0a/38/e1/0a38e1586ee66057c0e2dc37701757b4.jpg";
+          break;
+        case "2":
+          image.src = "https://img.freepik.com/premium-vector/scooter-cartoon-icon-illustration-motorcycle-vehicle-icon-concept-isolated_444663-974.jpg";
+          break;
+        case "3":
+          image.src = "https://img.freepik.com/premium-vector/auto-rickshaw-cartoon-style-vector-design_1275990-10365.jpg";
+          break;
+        case "4":
+            image.src = "https://media.istockphoto.com/id/1214396728/vector/red-car-icon-isolated-on-white-background-clip-art-car-red-cute-illustration-car-flat-simple.jpg?s=612x612&w=0&k=20&c=Lh5wvIsb1bXeZhBXXMLoLRsUQnp9ZmKmSBlLM-KTxEQ=";
+            break;
+        case "5":
+        case "6":
+          image.src = "https://static.vecteezy.com/system/resources/thumbnails/038/901/465/small/car-on-the-background-of-the-city-illustration-in-flat-style-vector.jpg";
+          break;
+        default:
+          image.src = "https://img.freepik.com/premium-vector/scooter-cartoon-icon-illustration-motorcycle-vehicle-icon-concept-isolated_444663-974.jpg";
+      }
+    });
+  });
+
+  function proceedToSeats() {
+    window.location.href = "../arrangement/arrangement-thuglife.html";
+  }
+</script>
+
+  </script>
+
+</body>
+</html>

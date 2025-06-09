@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Book Tickets - Thug Life</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f8f8;
+      padding: 20px;
+    }
+
+    .section {
+      background-color: #fff;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      border: 2px solid #f24359;
+    }
+
+    .section-header {
+      background-color: #f24359;
+      color: white;
+      padding: 12px;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .section-content {
+      padding: 20px;
+    }
+
+    .input-group {
+      margin-bottom: 15px;
+    }
+
+    input[type="email"],
+    input[type="tel"] {
+      width: calc(100% - 12px);
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      margin-bottom: 5px;
+    }
+
+    .btn {
+      background-color: #f24359;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .payment-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 10px;
+    }
+
+    .payment-option {
+      flex: 1 1 200px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+    }
+
+    .payment-option img {
+      width: 40px;
+      height: 40px;
+    }
+
+    .payment-option input {
+      margin-right: 10px;
+    }
+
+    .upi-logo {
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+
+    .note {
+      color: red;
+      font-size: 12px;
+    }
+
+    h3 {
+      margin-bottom: 10px;
+    }
+
+    .collapsible {
+      background-color: #f23a57;
+      color: white;
+      cursor: pointer;
+      padding: 16px 20px;
+      font-size: 16px;
+      font-weight: 500;
+      border: none;
+      width: 100%;
+      text-align: left;
+      display: flex;
+      align-items: center;
+    }
+
+    .collapsible::before {
+      content: "▼";
+      margin-right: 12px;
+      font-size: 14px;
+    }
+
+    .collapsible.active::before {
+      content: "▲";
+    }
+
+    .content {
+      display: none;
+      padding: 30px;
+      background-color: white;
+      border: 1px solid #eee;
+    }
+
+    .card-container {
+      background-color: #d7dbe4;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 350px;
+    }
+    .card-container h2 {
+      margin-bottom: 15px;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .row {
+      display: flex;
+      justify-content: space-between;
+    }
+    .row input {
+      width: 30%;
+    }
+    .row input.cvv {
+      width: 35%;
+    }
+    .btn {
+      width: 100%;
+      padding: 12px;
+      background-color: #f44360;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+    .btn:hover {
+      background-color: #d73853;
+    }
+    .terms {
+      font-size: 12px;
+      text-align: center;
+      margin-top: 10px;
+    }
+    .terms a {
+      color: #d73853;
+      text-decoration: none;
+    }
+    .offer-tabs {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #444;
+    }
+
+    .centered-title {
+      text-align: center;
+      font-weight: 600;
+      font-size: 16px;
+      margin-bottom: 25px;
+    }
+
+    .offer-form {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .offer-form input {
+      padding: 12px 15px;
+      font-size: 14px;
+      width: 260px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .offer-form button {
+      background-color: #f23a57;
+      color: white;
+      font-weight: 600;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .offer-note {
+      text-align: center;
+      margin-top: 18px;
+      font-size: 13px;
+      color: #555;
+    }
+
+    .offer-note span {
+      color: #f23a57;
+      font-weight: bold;
+    }
+
+    .offer-note small {
+      font-size: 12px;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+
+    
+  <!-- Contact Section -->
+<div class="section">
+  <div class="section-header">Share your Contact Details</div>
+  <div class="section-content">
+    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+      <input type="email" placeholder="Email address" required style="flex: 1; min-width: 200px;" />
+      <input type="tel" placeholder="Mobile Number" required style="flex: 1; min-width: 200px;" />
+    </div>
+    <div class="note">Please enter a valid mobile number.</div>
+    <button class="btn">CONTINUE</button>
+  </div>
+</div>
+
+
+  
+
+<!-- Unlock Offers Section -->
+<button class="collapsible">Unlock offers or Apply Promocodes</button>
+
+<div class="content">
+  <div class="offer-tabs">
+    Offer Code &nbsp;&nbsp;&nbsp; Credit/ Debit/ Netbanking
+  </div>
+
+  <div class="centered-title">
+    Apply for BookMyShow Offer/Discount
+  </div>
+
+  <div class="offer-form">
+    <input type="text" placeholder="Enter your offer code" />
+    <button>CHECK</button>
+  </div>
+
+  <div class="offer-note">
+    Works with <span>Movie Money</span> and <small>BMS promocodes</small>
+  </div>
+</div>
+
+
+  <!-- Payment Options -->
+  <div class="section">
+    <div class="section-header">Payment options</div>
+    <div class="section-content">
+      <h3>Pay by any UPI App</h3>
+      <div class="upi-logo">
+        <img src="https://www.shutterstock.com/image-vector/kerala-india-19-07-2023-260nw-2334125251.jpg" alt="UPI" height="30">
+      </div>
+
+      <div class="payment-options">
+        <label class="payment-option">
+          <input type="radio" name="upi" />
+          <img src="https://developers.google.com/static/pay/api/images/brand-guidelines/google-pay-mark.png" alt="GPay" />
+          Google Pay
+        </label>
+
+        <label class="payment-option">
+          <input type="radio" name="upi" />
+          <img src="https://www.shutterstock.com/image-vector/amazon-pay-logo-biggest-online-600nw-2360491029.jpg" alt="Amazon Pay" />
+          Amazon Pay UPI
+        </label>
+
+        <label class="payment-option">
+          <input type="radio" name="upi" />
+          <img src="https://img.icons8.com/?size=512&id=5RcHTSNy4fbL&format=png" alt="BHIM" />
+          BHIM
+        </label>
+
+        <label class="payment-option">
+          <input type="radio" name="upi" />
+          <img src="https://w7.pngwing.com/pngs/332/615/png-transparent-phonepe-india-unified-payments-interface-india-purple-violet-text-thumbnail.png" alt="PhonePe" />
+          PhonePe
+        </label>
+
+        <label class="payment-option">
+          <input type="radio" name="upi" />
+          <img src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Paytm_logo.jpg" alt="Paytm" />
+          Paytm
+        </label>
+
+        <label class="payment-option">
+          <input type="radio" name="upi" />
+          <img src="https://www.uxdt.nic.in/wp-content/uploads/2020/06/Preview.png?x26307" alt="Other" />
+          Other UPI
+        </label>
+      </div>
+    </div>
+  </div>
+
+   <div class="card-form-container">
+  <div class="card-title">Enter your Card details</div>
+  <div class="card-box">
+    <input type="text" placeholder="Enter Your Card Number">
+    <input type="text" placeholder="Name on the card">
+
+    <div class="row">
+      <input class="input-half" type="text" placeholder="MM">
+      <input class="input-half" type="text" placeholder="YY">
+      <input class="input-half" type="text" placeholder="CVV">
+    </div>
+  </div>
+  <a href="success.html">
+    <button class="make-payment-btn">MAKE PAYMENT</button>
+  </a>
+
+  <div class="terms">
+    By clicking "Make Payment" you agree to the
+    <a href="#">terms and conditions</a>
+  </div>
+</div>
+
+  <script>
+  const collBtn = document.querySelector(".collapsible");
+  const contentBox = document.querySelector(".content");
+
+  collBtn.addEventListener("click", () => {
+    collBtn.classList.toggle("active");
+    contentBox.style.display = contentBox.style.display === "block" ? "none" : "block";
+  });
+</script>
+
+
+</body>
+</html>

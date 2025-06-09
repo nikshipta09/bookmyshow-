@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Snack Selection</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Roboto', sans-serif;
+    }
+    body {
+      margin: 0;
+      background-color: #f9f9f9;
+    }
+    .container {
+      display: flex;
+      height: 100vh;
+    }
+    .snack-list {
+      flex: 3;
+      padding: 30px;
+      overflow-y: scroll;
+    }
+    .snack-header {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 18px;
+      color: #444;
+    }
+    .categories {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .category-btn {
+      padding: 8px 16px;
+      border: none;
+      background-color: #f1f1f1;
+      border-radius: 16px;
+      cursor: pointer;
+    }
+    .category-btn.active {
+      background-color: #e91e63;
+      color: white;
+    }
+    .snack-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    .snack-card {
+      background: white;
+      padding: 16px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .snack-card img {
+      height: 80px;
+    }
+    .snack-details {
+      flex: 1;
+      margin-left: 10px;
+    }
+    .snack-title {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    .snack-info {
+      font-size: 12px;
+      color: gray;
+      margin-bottom: 5px;
+    }
+    .price {
+      font-weight: bold;
+    }
+    .add-btn {
+      background-color: white;
+      color: #e91e63;
+      border: 1px solid #e91e63;
+      padding: 6px 14px;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+    .summary {
+      flex: 1;
+      border-left: 1px solid #ddd;
+      padding: 20px;
+    }
+    .summary-box {
+      background: #fff;
+      padding: 16px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .summary-box h3 {
+      margin-top: 0;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+    .row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .donate-box {
+      background-color: #f8f8f8;
+      padding: 10px;
+      border-radius: 6px;
+      font-size: 13px;
+      margin-top: 20px;
+    }
+    .amount-box {
+      background-color: #fff9c4;
+      padding: 10px;
+      margin-top: 15px;
+      border-radius: 6px;
+      font-weight: bold;
+      font-size: 16px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .ticket-type {
+      margin-top: 20px;
+    }
+    .ticket-type h4 {
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+    .ticket-buttons {
+      display: flex;
+      gap: 10px;
+    }
+    .ticket-buttons button {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      background: white;
+      cursor: pointer;
+      flex: 1;
+    }
+    .back {
+      padding: 10px;
+      font-size: 14px;
+      border-bottom: 1px solid #ddd;
+    }
+    .back span {
+      margin-right: 10px;
+      cursor: pointer;
+    }
+    .movie-info {
+      padding: 10px 20px;
+      font-size: 13px;
+      color: #444;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="back">
+    <span>&larr;</span> Thug Life (Telugu)
+  </div>
+  <div class="movie-info">
+    Cinepolis: PVP Square Mall, Vijayawada | Monday, Jun 9, 2025, 03:45 PM
+  </div>
+  <div class="container">
+    <div class="snack-list">
+      <div class="snack-header">Now get your favorite snack at a <span style="color:#d32f2f;font-weight:bold">discounted price!</span></div>
+      <div class="categories">
+        <button class="category-btn active">ALL</button>
+        <button class="category-btn">BEVERAGES</button>
+        <button class="category-btn">POPCORN</button>
+        <button class="category-btn">COMBOS</button>
+      </div>
+      <div class="snack-grid">
+        <div class="snack-card">
+          <img src="https://in.bmscdn.com/fnb/v3/xxhdpi/1020011_17082018145045.png" alt="Coke" />
+          <div class="snack-details">
+            <div class="snack-title">Coke 580ml</div>
+            <div class="snack-info">267 kcal</div>
+            <div class="price">₹360</div>
+          </div>
+          <button class="add-btn" onclick="addSnack(360)">Add</button>
+        </div>
+        <div class="snack-card">
+          <img src="https://in.bmscdn.com/fnb/v3/xxhdpi/1020011_17082018145045.png" alt="Coke" />
+          <div class="snack-details">
+            <div class="snack-title">Coke 810ml</div>
+            <div class="snack-info">373 kcal</div>
+            <div class="price">₹440</div>
+          </div>
+          <button class="add-btn" onclick="addSnack(440)">Add</button>
+        </div>
+        <div class="snack-card">
+          <img src="https://in.bmscdn.com/fnb/v3/xxhdpi/2001054_26122022174031.png" alt="Popcorn" />
+          <div class="snack-details">
+            <div class="snack-title">Jumbo Salted Popcorn</div>
+            <div class="snack-info">1311 kcal</div>
+            <div class="price">₹570</div>
+          </div>
+          <button class="add-btn" onclick="addSnack(570)">Add</button>
+        </div>
+        <div class="snack-card">
+          <img src="https://in.bmscdn.com/fnb/v3/xxhdpi/2001054_26122022174031.png" alt="Cheese Popcorn" />
+          <div class="snack-details">
+            <div class="snack-title">Jumbo Cheese Popcorn</div>
+            <div class="snack-info">1380 kcal</div>
+            <div class="price">₹600</div>
+          </div>
+          <button class="add-btn" onclick="addSnack(600)">Add</button>
+        </div>
+        <div class="snack-card">
+          <img src="https://in.bmscdn.com/fnb/v3/xxhdpi/1020080_17082018155618.png" alt="Cappuccino" />
+          <div class="snack-details">
+            <div class="snack-title">Cappuccino 150ml</div>
+            <div class="snack-info">150ml | 90kcal </div>
+            <div class="price">₹240</div>
+          </div>
+          <button class="add-btn" onclick="addSnack(240)">Add</button>
+        </div>
+        <div class="snack-card">
+          <img src="https://in.bmscdn.com/fnb/v3/xxhdpi/2000489_01082023133858.png" alt="Combo" />
+          <div class="snack-details">
+            <div class="snack-title">Friend's Combo(flavoured)</div>
+            <div class="snack-info">Jumbo Tub Flavoured Popcorn 240g + Nachos 80g with Cheese Dip 50g + Large Coke 810ml | 1516 kcal/div>
+            <div class="price">₹1080</div>
+          </div>
+          <button class="add-btn" onclick="addSnack(1080)">Add</button>
+        </div>
+      </div>
+    </div>
+     <div class="summary">
+    <h3>Amount Payable:</h3>
+    <span class="amount">₹<span id="amountPayable">0.00</span></span>
+    <!-- Add this inside .summary div BEFORE closing it -->
+
+<div class="ticket-type">
+  <h4>Select Tickets:</h4>
+  <div class="ticket-buttons">
+    <button onclick="selectTickets(0)">0 Tickets</button>
+    <button onclick="selectTickets(1)">1 Ticket (₹250)</button>
+    <button onclick="selectTickets(2)">2 Tickets (₹500)</button>
+    <button onclick="selectTickets(3)">3 Tickets (₹750)</button>
+  </div>
+</div>
+<a href="confirmation.html">
+<button id="proceedBtn" style="margin-top: 20px; padding: 10px 20px; background:#e91e63; color: white; border:none; border-radius:6px; cursor:pointer;">
+  Proceed
+</button>
+</a>
+
+  </div>
+
+  <script>
+  let snackAmount = 0;
+  let ticketAmount = 0;
+
+  function addSnack(price) {
+    snackAmount += price;
+    updateTotal();
+  }
+
+  function selectTickets(count) {
+    ticketAmount = count * 250; // 1 ticket = ₹250
+    updateTotal();
+  }
+
+  function updateTotal() {
+    let totalAmount = snackAmount + ticketAmount;
+    document.getElementById("amountPayable").innerText = totalAmount.toFixed(2);
+  }
+  document.getElementById('proceedBtn').addEventListener('click', () => {
+  const totalAmount = snackAmount + ticketAmount;
+  if(totalAmount === 0) {
+    alert("Please select tickets or snacks before proceeding.");
+    return;
+  }
+  alert(`Proceeding to pay ₹${totalAmount.toFixed(2)}`);
+  // Here you can redirect or call your payment API with totalAmount
+});
+</script>
+
+</body>
+</html>

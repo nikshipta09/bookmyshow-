@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Thug Life - (Telugu)</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    body {
+  font-family: 'Roboto', sans-serif;
+  background: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 80%;
+  margin: 30px auto;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.tags span {
+  background: #eee;
+  padding: 4px 8px;
+  margin-right: 5px;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+.date-strip {
+  display: flex;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.date {
+  background: #eaeaea;
+  padding: 10px;
+  border-radius: 6px;
+  text-align: center;
+  width: 70px;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.date span {
+  font-size: 18px;
+  display: block;
+  margin-top: 5px;
+}
+
+.date.selected {
+  background: #f44336;
+  color: white;
+}
+
+.filters button {
+  margin: 10px 5px;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: white;
+  cursor: pointer;
+}
+
+.legend {
+  margin: 20px 0;
+  font-size: 13px;
+}
+
+.green-dot,
+.yellow-dot {
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.green-dot {
+  background-color: green;
+}
+
+.yellow-dot {
+  background-color: orange;
+  margin-left: 15px;
+}
+
+.lan {
+  background: #d3f9d8;
+  padding: 2px 6px;
+  margin-left: 15px;
+  border-radius: 3px;
+}
+
+.theatre {
+  background: #f9f9f9;
+  padding: 15px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+}
+
+.theatre h3 {
+  margin: 0 0 5px 0;
+}
+
+.icons {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.showtimes button {
+  border: 1px solid green;
+  color: green;
+  background: white;
+  padding: 6px 12px;
+  margin: 5px 5px 0 0;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.note {
+  font-size: 12px;
+  color: #888;
+  margin-top: 10px;
+}
+
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Thug Life - (Telugu)</h1>
+    <div class="tags">
+      <span>UA16+</span>
+      <span>Action</span>
+      <span>Crime</span>
+      <span>Drama</span>
+      <span>Thriller</span>
+    </div>
+
+    <div class="date-strip">
+      <div class="date selected">MON<br><span>09</span> JUN</div>
+      <div class="date">TUE<br><span>10</span> JUN</div>
+      <div class="date">WED<br><span>11</span> JUN</div>
+      <div class="date">THU<br><span>12</span> JUN</div>
+      <div class="date">FRI<br><span>13</span> JUN</div>
+      <div class="date">SAT<br><span>14</span> JUN</div>
+      <div class="date">SUN<br><span>15</span> JUN</div>
+    </div>
+
+    <div class="filters">
+      <button>Telugu - 2D</button>
+      <button>Price Range</button>
+      <button>Special Formats</button>
+      <button>Preferred Time</button>
+    </div>
+
+    <div class="legend">
+      <span class="green-dot"></span> AVAILABLE
+      <span class="yellow-dot"></span> FAST FILLING
+      <span class="lan">LAN</span> SUBTITLES LANGUAGE
+    </div>
+
+    <div class="theatre">
+      <h3>Cinepolis: PVP Square Mall, Vijayawada</h3>
+      <div class="icons">🎟️ M-Ticket | 🍿 Food & Beverage</div>
+      <div class="showtimes">
+        <a href="../seating/seat-thuglife.html">
+            <button onclick="openSeatModal()">10:30 AM</button>
+        </a>
+        <a href="../seating/seat-thuglife.html">
+            <button onclick="openSeatModal()">3:45 PM</button>
+        </a>
+        <a href="../seating/seat-thuglife.html">
+            <button onclick="openSeatModal()">7:10 PM</button>
+        </a>
+        <a href="../seating/seat-thuglife.html">
+            <button onclick="openSeatModal()">10:40 PM</button>
+        </a>
+      </div>
+      <p class="note">Non-cancellable</p>
+    </div>
+
+    <div class="theatre">
+      <h3>INOX: LEPL Icon, Patamata</h3>
+      <div class="icons">🎟️ M-Ticket | 🍿 Food & Beverage</div>
+      <div class="showtimes">
+        <a href="../seating/seat-thuglife.html">
+            <button>10:10 AM</button>
+        </a>
+        <a href="../seating/seat-thuglife.html">
+            <button>04:25 PM</button>
+        </a>
+        <a href="../seating/seat-thuglife.html">
+            <button>10:40 PM</button>
+        </a>
+
+      </div>
+      <p class="note">Cancellation available</p>
+    </div>
+
+    <div class="theatre">
+      <h3>Cinepolis: Power One Mall, Vijayawada</h3>
+      <div class="icons">🎟️ M-Ticket | 🍿 Food & Beverage</div>
+      <div class="showtimes">
+        <a href="../seating/seat-thuglife.html">
+            <button>11:15 AM</button>
+        </a>       
+        <a href="../seating/seat-thuglife.html">
+            <button>02:40 PM</button>
+        </a>
+        <a href="../seating/seat-thuglife.html">
+            <button>06:05 PM</button>
+        </a>
+      </div>
+      <p class="note">Non-cancellable</p>
+      
+    </div>
+
+  </div>
+
+</body>
+</html>
